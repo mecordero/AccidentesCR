@@ -1,0 +1,3 @@
+SELECT Dia as nombre FROM [acc$]
+GROUP BY Dia
+HAVING Dia IS NOT NULL

@@ -1,0 +1,3 @@
+SELECT Mes as nombre FROM [acc$]
+GROUP BY Mes
+HAVING Mes IS NOT NULL

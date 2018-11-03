@@ -1,0 +1,2 @@
+1. En id_sexo el desconocido es 2
+2. le quité la tilde a código de rol, código de lesion y tipo de lesión
