@@ -20,6 +20,7 @@ public class AccidentesDashboard {
     public static void main(String[] args) throws SQLException {
         DAOSql dao = new DAOSql();
         dao.cargarDatos();
+        dao.consulta2("lesion");
         dao.consulta3();
     }
     

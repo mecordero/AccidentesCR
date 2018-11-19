@@ -19,6 +19,10 @@ public class DAOSql {
 
     private Connection con = null;
 
+    public Connection getCon() {
+        return con;
+    }
+
     public void conectar() throws SQLException {
         try {
             //conexion a ms sql 
@@ -136,6 +140,23 @@ public class DAOSql {
         }
         desconectar();
         return datos;
+    }
+    
+    public void consulta2(String indicador) throws SQLException{
+        conectar();
+        Statement select = con.createStatement();
+        Resultado resultado = new Resultado();
+        int i = 0;
+        ResultSet result = select
+                .executeQuery("SELECT COUNT(*), id_" + indicador + 
+                        " FROM Afectado GROUP BY id_" + indicador);
+        while (result.next()) { 
+            int count = result.getInt(1);
+            int id = result.getInt(2);
+            resultado.resultado.put(id, count);
+            System.out.println("Indicador " + count);
+        }
+        desconectar();
     }
     
     public void consulta3() throws SQLException {
