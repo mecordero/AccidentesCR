@@ -5,7 +5,7 @@
  */
 package accidentesdashboard;
 
-import accidentesdashboard.Model.DAOSql;
+import Model.DAOSql;
 import java.sql.SQLException;
 
 /**
@@ -20,6 +20,7 @@ public class AccidentesDashboard {
     public static void main(String[] args) throws SQLException {
         DAOSql dao = new DAOSql();
         dao.cargarDatos();
+        dao.consulta3();
     }
     
 }

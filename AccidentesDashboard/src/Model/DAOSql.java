@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package accidentesdashboard.Model;
+package Model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -37,9 +37,10 @@ public class DAOSql {
         if (this.con != null) {
             this.con.close();
         }
+        System.out.println("Desconectado de la base");
     }
 
-    public void cargarDatos() throws SQLException {
+    public Datos cargarDatos() throws SQLException {
         conectar();
         Datos datos = new Datos();
         Statement select = con.createStatement();
@@ -133,6 +134,26 @@ public class DAOSql {
 
             datos.distritos.put(key, d);
         }
+        desconectar();
+        return datos;
+    }
+    
+    public void consulta3() throws SQLException {
+        conectar(); // se conecta a la base
+        Statement select = con.createStatement();
+        Resultado resultado = new Resultado();
+        int i = 0;
+        ResultSet result = select
+                .executeQuery("SELECT id_sexo, id_provincia, COUNT(id_sexo) FROM Afectado GROUP BY id_provincia, id_sexo");
+        while (result.next()) { 
+            int sexo = result.getInt(1);
+            int provincia = result.getInt(2);
+            int count = result.getInt(3);
+            Consulta3 consulta3 = new Consulta3(sexo, provincia, count);
+            resultado.resultado.put(++i, consulta3);
+            System.out.println(consulta3.toString());
+        }
+        desconectar();
     }
 
 }
