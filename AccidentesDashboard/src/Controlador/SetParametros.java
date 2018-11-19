@@ -15,7 +15,7 @@ public class SetParametros {
     
     //provincia, canton, distrito, dia, mes, año, rol, lesion, edad quinquenal y sexo
     
-    private ArrayList<String> parametros;
+    private ArrayList parametros;
 
     public SetParametros() {
         parametros = new ArrayList<>();
@@ -23,49 +23,49 @@ public class SetParametros {
     }
 
 
-    public void addParametro(String parametro){
+    public void addParametro(Object parametro){
         parametros.add(parametro);
     }
     
     
     public String getProvincia() {
-        return parametros.get(0);
+        return (String) parametros.get(0);
     }
 
     public String getCanton() {
-        return parametros.get(1);
+        return (String) parametros.get(1);
     }
 
     public String getDistrito() {
-        return parametros.get(2);
+        return (String) parametros.get(2);
     }
 
     public String getDia() {
-        return parametros.get(3);
+        return (String) parametros.get(3);
     }
 
     public String getMes() {
-        return parametros.get(4);
+        return (String) parametros.get(4);
     }
 
-    public String getAnho() {
-        return parametros.get(5);
+    public int getAnho() {
+        return (int) parametros.get(5);
     }
 
     public String getRol() {
-        return parametros.get(6);
+        return (String) parametros.get(6);
     }
 
     public String getLesion() {
-        return parametros.get(7);
+        return (String) parametros.get(7);
     }
 
     public String getEdadQuinquenal() {
-        return parametros.get(8);
+        return (String) parametros.get(8);
     }
 
     public String getSexo() {
-        return parametros.get(9);
+        return (String) parametros.get(9);
     }
 
     @Override

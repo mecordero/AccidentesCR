@@ -19,6 +19,13 @@ public class DAOSql {
 
     private Connection con = null;
 
+    public Connection getCon() {
+        return con;
+    }
+
+    
+    
+    
     public void conectar() throws SQLException {
         try {
             //conexion a ms sql 

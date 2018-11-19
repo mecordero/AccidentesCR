@@ -41,7 +41,7 @@ public class ParametrosIterator implements Iterator{
                 resultado.addParametro(null);
             }
             else
-                resultado.addParametro((String) parametros.getI(i).get(actual[i]));
+                resultado.addParametro(parametros.getI(i).get(actual[i]));
         }
         
         hasNext = false;
