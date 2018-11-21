@@ -5,6 +5,7 @@
  */
 package accidentesdashboard;
 
+import Controlador.GraficoReal;
 import Model.DAOSql;
 import java.sql.SQLException;
 
@@ -20,7 +21,9 @@ public class AccidentesDashboard {
     public static void main(String[] args) throws SQLException {
         DAOSql dao = new DAOSql();
         dao.cargarDatos();
-        dao.consulta2("lesion");
+        GraficoReal gr = new GraficoReal("Informacion accidentes","X","Cantidad");
+        gr.anadirDatos("sexo");
+        gr.dibujar("dia");
         dao.consulta3();
     }
     

@@ -10,5 +10,5 @@ package Controlador;
  * @author Marlen
  */
 public interface Grafico {
-    public void dibujar();
+    public void dibujar(String Indicadores);
 }

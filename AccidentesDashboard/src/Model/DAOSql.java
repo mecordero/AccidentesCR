@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  *
@@ -159,6 +160,33 @@ public class DAOSql {
         desconectar();
     }
     
+    public ArrayList consultaGrafic(String indicador) throws SQLException{
+        conectar();
+        Statement select = con.createStatement();
+        Resultado resultado = new Resultado();
+        int i = 0;
+        ResultSet result = select
+                .executeQuery("SELECT nombre, COUNT(*)" + 
+                        " FROM Afectado a JOIN "+ indicador + " i on a.id_" +indicador + " = i.id_"+
+                        indicador+ " GROUP BY nombre");
+       
+        ArrayList<Integer> ALCount =  new ArrayList();
+        ArrayList<Object>  ALName = new ArrayList();
+        ArrayList<ArrayList> Result = new ArrayList();
+        while (result.next()) { 
+            String nombre = result.getNString(1);
+            int id = result.getInt(2);
+            resultado.resultado.put(id, nombre);
+            System.out.println(id +" es de " + nombre);
+            ALName.add(nombre);
+            ALCount.add(id);
+        }
+        Result.add(ALCount);
+        Result.add(ALName);
+        desconectar();
+        return Result;
+    }
+        
     public void consulta3() throws SQLException {
         conectar(); // se conecta a la base
         Statement select = con.createStatement();

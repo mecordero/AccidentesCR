@@ -1,26 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
-        <file>
-            <url>src/Controlador/SetParametros.java</url>
-            <bookmark id="1">
-                <name/>
-                <line>17</line>
-                <key/>
-            </bookmark>
-        </file>
-    </editor-bookmarks>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
-        <group/>
-=======
         <group>
-            <file>file:/C:/Users/Meli/Documents/TEC/2018%202do%20Sem/Diseño%20de%20Software/Proyecto%202/AccidentesDashboard/src/Controlador/ParametrosCollection.java</file>
-            <file>file:/C:/Users/Meli/Documents/TEC/2018%202do%20Sem/Diseño%20de%20Software/Proyecto%202/AccidentesDashboard/src/Controlador/ParametrosIterator.java</file>
-            <file>file:/C:/Users/Meli/Documents/TEC/2018%202do%20Sem/Diseño%20de%20Software/Proyecto%202/AccidentesDashboard/src/accidentesdashboard/AccidentesDashboard.java</file>
-            <file>file:/C:/Users/Meli/Documents/TEC/2018%202do%20Sem/Diseño%20de%20Software/Proyecto%202/AccidentesDashboard/src/Controlador/mainPruebas.java</file>
-            <file>file:/C:/Users/Meli/Documents/TEC/2018%202do%20Sem/Diseño%20de%20Software/Proyecto%202/AccidentesDashboard/src/Controlador/Container.java</file>
+            <file>file:/C:/Users/Marlen/Desktop/AccidentesCR-master/AccidentesDashboard/src/Controlador/mainPruebas.java</file>
+            <file>file:/C:/Users/Marlen/Desktop/AccidentesCR-master/AccidentesDashboard/src/Model/DAOSql.java</file>
+            <file>file:/C:/Users/Marlen/Desktop/AccidentesCR-master/AccidentesDashboard/src/Model/Distrito.java</file>
+            <file>file:/C:/Users/Marlen/Desktop/AccidentesCR-master/AccidentesDashboard/src/Model/Datos.java</file>
         </group>
->>>>>>> bf2f91c26d4d4c9420e1f4db3a48d9297c48f3c6
     </open-files>
 </project-private>
