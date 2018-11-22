@@ -67,7 +67,7 @@ public class DAOSql {
             String val = result.getString(2);
 
             System.out.println("Sexo = " + val);
-            datos.dias.put(key, val);
+            datos.sexos.put(key, val);
         }
         
         select = con.createStatement();
@@ -160,7 +160,6 @@ public class DAOSql {
             String nombre = result.getNString(1);
             int id = result.getInt(2);
             resultado.resultado.put(id, nombre);
-            System.out.println(id +" es de " + nombre);
             ALName.add(nombre);
             ALCount.add(id);
         }

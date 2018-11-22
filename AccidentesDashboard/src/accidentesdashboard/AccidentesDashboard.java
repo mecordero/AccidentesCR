@@ -12,6 +12,7 @@ import Controlador.Provincias;
 import Model.Consulta3;
 import Model.DAOSql;
 import Model.Resultado;
+import View.MainUI;
 import java.sql.SQLException;
 import java.util.Iterator;
 
@@ -25,7 +26,7 @@ public class AccidentesDashboard {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws SQLException {
-        DAOSql dao = new DAOSql();
+        //  DAOSql dao = new DAOSql();
         //dao.cargarDatos();
         //Resultado resultado = dao.consulta3();
         //Provincias provincias = new Provincias();
@@ -37,13 +38,8 @@ public class AccidentesDashboard {
        // provincias.getGrafico().dibujar();
         //provincias.setState(2);
         //provincias.getGrafico().dibujar("ya");
-        GraficoProxy proxy = new GraficoProxy();
-        proxy.setEtiqHoriz("nosr");
-        proxy.setEtiqVert("cd");
-        proxy.setTituloGrafico("titulo");
-        proxy.setIndicador("sexo");
-        proxy.dibujar();
-        proxy.dibujar();
+        MainUI UI = new MainUI();
+        UI.setVisible(true);
     }
     
 }

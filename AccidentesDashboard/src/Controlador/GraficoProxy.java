@@ -16,6 +16,7 @@ import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultKeyedValues2DDataset;
 
 /**
  *
@@ -31,7 +32,7 @@ public class GraficoProxy implements Grafico{
     DefaultCategoryDataset datos = new DefaultCategoryDataset();
     ArrayList<ArrayList> memoria= new ArrayList();
     String indicador;
-    
+
     @Override
     public void dibujar() {
         ArrayList<String> name= new ArrayList();
@@ -40,14 +41,14 @@ public class GraficoProxy implements Grafico{
         if(memoria.isEmpty()){
             graficoReal = new GraficoReal(tituloGrafico, EtiqHoriz, EtiqVert);
             try {
-                graficoReal.anadirDatos(indicador, this);
+                graficoReal.anadirDatos(indicador,this);
             } catch (SQLException ex) {
                 Logger.getLogger(GraficoProxy.class.getName()).log(Level.SEVERE, null, ex);
             }
-            graficoReal.dibujar(); 
+            graficoReal.dibujar();
+            return;
         }
         for (int i = 0; i < memoria.size(); i++) {
-            System.out.println(memoria);
             if(memoria.get(i).get(0).equals(indicador)){
                 for (int j = 1; j < memoria.get(i).size(); j++) {
                     if(j%2==0){
@@ -57,6 +58,7 @@ public class GraficoProxy implements Grafico{
                         name.add(memoria.get(i).get(j).toString());
                     }
                 }
+                datos= new  DefaultCategoryDataset();
                 anadirDatos(indicador, name, counter);
                 grafica =ChartFactory.createBarChart(tituloGrafico,EtiqHoriz, EtiqVert, datos,PlotOrientation.VERTICAL, true, true, false);
                 ChartPanel Panel = new ChartPanel(grafica);
@@ -65,18 +67,17 @@ public class GraficoProxy implements Grafico{
                 Ventana.pack();
                 Ventana.setVisible(true);
                 Ventana.setLocationRelativeTo(null);
+                return;
             }
-            
-            else{
+        }    
+                
                 graficoReal = new GraficoReal(tituloGrafico, EtiqHoriz, EtiqVert);
                 try {
-                    graficoReal.anadirDatos(indicador, this);
+                    graficoReal.anadirDatos(indicador,this);
                 } catch (SQLException ex) {
                     Logger.getLogger(GraficoProxy.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                graficoReal.dibujar(); 
-            }
-        }
+                graficoReal.dibujar();
     }
     public void anadirDatos(String Indicador,ArrayList<String> name,ArrayList<Integer> counter){
         for (int i = 0; i < name.size(); i++) {

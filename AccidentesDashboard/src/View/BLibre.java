@@ -5,6 +5,10 @@
  */
 package View;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Bryan
@@ -131,7 +135,12 @@ public class BLibre extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        BCompuesta bCompuesta = new BCompuesta();
+        BCompuesta bCompuesta = null;
+        try {
+            bCompuesta = new BCompuesta();
+        } catch (SQLException ex) {
+            Logger.getLogger(BLibre.class.getName()).log(Level.SEVERE, null, ex);
+        }
         bCompuesta.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed

@@ -41,7 +41,6 @@ public class GraficoReal implements Grafico {
     @Override
     public void dibujar(){
         grafica =ChartFactory.createBarChart(tituloGrafico,EtiqHoriz, EtiqVert, datos,PlotOrientation.VERTICAL, true, true, false);
-              
         ChartPanel Panel = new ChartPanel(grafica);
         JFrame Ventana = new JFrame("JFreeChart");
         Ventana.getContentPane().add(Panel);
@@ -51,6 +50,7 @@ public class GraficoReal implements Grafico {
     }
     
     public void anadirDatos(String Indicador,GraficoProxy guardar) throws SQLException{
+        datos = new DefaultCategoryDataset();
         ArrayList<ArrayList> grafic_info;
         ArrayList temp = new ArrayList();
         grafic_info= dao.consultaGrafic(Indicador);

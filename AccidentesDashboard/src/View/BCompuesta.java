@@ -5,17 +5,30 @@
  */
 package View;
 
+import Controlador.Controlador;
+import Controlador.DTOUser;
+import Model.Datos;
+import Model.Distrito;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.DefaultListModel;
+
 /**
  *
  * @author Bryan
  */
 public class BCompuesta extends javax.swing.JFrame {
-
+    DTOUser dto = new DTOUser();
+    Datos datos = new Datos();
+    Controlador control = new Controlador();
     /**
      * Creates new form BCompuesta
      */
-    public BCompuesta() {
+    public BCompuesta() throws SQLException {
         initComponents();
+        datos = control.cargarDatos();
+        ListaDatos.setVisible(false);
     }
 
     /**
@@ -43,8 +56,10 @@ public class BCompuesta extends javax.swing.JFrame {
         jButton33 = new javax.swing.JButton();
         jButton34 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        ListaDatos = new javax.swing.JList<>();
         jButton35 = new javax.swing.JButton();
-        jButton36 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -110,37 +125,90 @@ public class BCompuesta extends javax.swing.JFrame {
 
         jButton28.setText("Tipo de Lesión");
         jButton28.setToolTipText("");
+        jButton28.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton28ActionPerformed(evt);
+            }
+        });
 
         jButton29.setText("Cantón");
         jButton29.setToolTipText("");
+        jButton29.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton29ActionPerformed(evt);
+            }
+        });
 
         jButton30.setText("Distrito");
+        jButton30.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton30ActionPerformed(evt);
+            }
+        });
 
-        jButton31.setText("Años");
+        jButton31.setText("Dias");
         jButton31.setToolTipText("");
+        jButton31.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton31ActionPerformed(evt);
+            }
+        });
 
         jButton32.setText("Provincia");
+        jButton32.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton32ActionPerformed(evt);
+            }
+        });
 
         jButton33.setText("Sexo");
         jButton33.setToolTipText("");
+        jButton33.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton33ActionPerformed(evt);
+            }
+        });
 
         jButton34.setText("Ir");
+
+        ListaDatos.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(ListaDatos);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 921, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(219, 219, 219)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(309, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(79, 79, 79)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(98, Short.MAX_VALUE))
         );
 
-        jButton35.setText("Edad Quinquenal");
+        jButton35.setText("Meses");
         jButton35.setToolTipText("");
+        jButton35.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton35ActionPerformed(evt);
+            }
+        });
 
-        jButton36.setText("jButton36");
+        jButton4.setText("Roles");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
         panel1.setLayout(panel1Layout);
@@ -155,15 +223,16 @@ public class BCompuesta extends javax.swing.JFrame {
                         .addGap(85, 85, 85)
                         .addComponent(jButton34, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panel1Layout.createSequentialGroup()
-                        .addGap(112, 112, 112)
-                        .addComponent(jButton36)))
+                        .addGap(25, 25, 25)
+                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton31, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panel1Layout.createSequentialGroup()
                     .addGap(26, 26, 26)
                     .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton33, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(panel1Layout.createSequentialGroup()
                                 .addComponent(jButton32)
@@ -185,11 +254,13 @@ public class BCompuesta extends javax.swing.JFrame {
             .addGroup(panel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 338, Short.MAX_VALUE)
-                .addComponent(jButton34, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 256, Short.MAX_VALUE)
+                .addComponent(jButton31)
                 .addGap(18, 18, 18)
-                .addComponent(jButton36)
-                .addGap(24, 24, 24))
+                .addComponent(jButton4)
+                .addGap(18, 18, 18)
+                .addComponent(jButton34, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65))
             .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panel1Layout.createSequentialGroup()
                     .addGap(12, 12, 12)
@@ -209,9 +280,7 @@ public class BCompuesta extends javax.swing.JFrame {
                             .addComponent(jButton33)
                             .addGap(18, 18, 18)
                             .addComponent(jButton28)
-                            .addGap(18, 18, 18)
-                            .addComponent(jButton31)
-                            .addGap(49, 49, Short.MAX_VALUE)))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 203, Short.MAX_VALUE)))
                     .addGap(12, 12, 12)))
         );
 
@@ -251,28 +320,99 @@ public class BCompuesta extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton32ActionPerformed
+       ListaDatos.setVisible(true);
+       HashMap<Integer, String> provincia= datos.getProvincias();
+       DefaultListModel modeloProvincias = new DefaultListModel();
+       
+       for (HashMap.Entry<Integer, String> entry : provincia.entrySet()) {
+            modeloProvincias.addElement(entry.getValue());
+           
+       }
+        this.ListaDatos.setModel(modeloProvincias);
+    }//GEN-LAST:event_jButton32ActionPerformed
+
+    private void jButton30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton30ActionPerformed
+       ListaDatos.setVisible(true);
+       HashMap<Integer, Distrito> distrito= datos.getDistritos();
+       DefaultListModel modeloDistrito = new DefaultListModel();
+       
+       for (Map.Entry<Integer, Distrito> entry : distrito.entrySet()) {
+            modeloDistrito.addElement(entry.getValue().getNombre());
+       }
+        this.ListaDatos.setModel(modeloDistrito);
+    }//GEN-LAST:event_jButton30ActionPerformed
+
+    private void jButton29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton29ActionPerformed
+       ListaDatos.setVisible(true);
+       HashMap<Integer, String> canton= datos.getCantones();
+       DefaultListModel modeloCanton = new DefaultListModel();
+       
+       for (Map.Entry<Integer, String> entry : canton.entrySet()) {
+            modeloCanton.addElement(entry.getValue());
+       }
+        this.ListaDatos.setModel(modeloCanton);
+    }//GEN-LAST:event_jButton29ActionPerformed
+
+    private void jButton35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton35ActionPerformed
+       ListaDatos.setVisible(true);
+       HashMap<Integer, String> meses= datos.getMeses();
+       DefaultListModel modeloMeses = new DefaultListModel();
+       
+       for (Map.Entry<Integer, String> entry : meses.entrySet()) {
+            modeloMeses.addElement(entry.getValue());
+       }
+        this.ListaDatos.setModel(modeloMeses);
+    }//GEN-LAST:event_jButton35ActionPerformed
+
+    private void jButton33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton33ActionPerformed
+       ListaDatos.setVisible(true);
+       HashMap<Integer, String> sexo= datos.getSexos();
+       DefaultListModel modeloSexo = new DefaultListModel();
+       
+       for (Map.Entry<Integer, String> entry : sexo.entrySet()) {
+            modeloSexo.addElement(entry.getValue());
+       }
+        this.ListaDatos.setModel(modeloSexo);
+    }//GEN-LAST:event_jButton33ActionPerformed
+
+    private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton28ActionPerformed
+       ListaDatos.setVisible(true);
+       HashMap<Integer, String> lesion= datos.getLesiones();
+       DefaultListModel modeloLesion = new DefaultListModel();
+       
+       for (Map.Entry<Integer, String> entry : lesion.entrySet()) {
+            modeloLesion.addElement(entry.getValue());
+       }
+        this.ListaDatos.setModel(modeloLesion);
+    }//GEN-LAST:event_jButton28ActionPerformed
+
+    private void jButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton31ActionPerformed
+       ListaDatos.setVisible(true);
+       HashMap<Integer, String> dias= datos.getDias();
+       DefaultListModel modeloDias = new DefaultListModel();
+       
+       for (Map.Entry<Integer, String> entry : dias.entrySet()) {
+            modeloDias.addElement(entry.getValue());
+       }
+        this.ListaDatos.setModel(modeloDias);
+    }//GEN-LAST:event_jButton31ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+       HashMap<Integer, String> roles= datos.getRoles();
+       DefaultListModel modeloRoles = new DefaultListModel();
+       
+       for (Map.Entry<Integer, String> entry : roles.entrySet()) {
+            modeloRoles.addElement(entry.getValue());
+       }
+       this.ListaDatos.setModel(modeloRoles);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JList<String> ListaDatos;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton17;
-    private javax.swing.JButton jButton18;
-    private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton20;
-    private javax.swing.JButton jButton21;
-    private javax.swing.JButton jButton22;
-    private javax.swing.JButton jButton23;
-    private javax.swing.JButton jButton24;
-    private javax.swing.JButton jButton25;
-    private javax.swing.JButton jButton26;
-    private javax.swing.JButton jButton27;
     private javax.swing.JButton jButton28;
     private javax.swing.JButton jButton29;
     private javax.swing.JButton jButton3;
@@ -282,30 +422,13 @@ public class BCompuesta extends javax.swing.JFrame {
     private javax.swing.JButton jButton33;
     private javax.swing.JButton jButton34;
     private javax.swing.JButton jButton35;
-    private javax.swing.JButton jButton36;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane1;
     private java.awt.Panel panel1;
-    private java.awt.Panel panel2;
-    private java.awt.Panel panel3;
-    private java.awt.Panel panel4;
     // End of variables declaration//GEN-END:variables
 }
