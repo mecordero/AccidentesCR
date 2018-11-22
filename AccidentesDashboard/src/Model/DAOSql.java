@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  *
@@ -142,39 +143,61 @@ public class DAOSql {
         return datos;
     }
     
-    public void consulta2(String indicador) throws SQLException{
+    public ArrayList consultaGrafic(String indicador) throws SQLException{
         conectar();
         Statement select = con.createStatement();
         Resultado resultado = new Resultado();
         int i = 0;
         ResultSet result = select
-                .executeQuery("SELECT COUNT(*), id_" + indicador + 
-                        " FROM Afectado GROUP BY id_" + indicador);
+                .executeQuery("SELECT nombre, COUNT(*)" + 
+                        " FROM Afectado a JOIN "+ indicador + " i on a.id_" +indicador + " = i.id_"+
+                        indicador+ " GROUP BY nombre");
+       
+        ArrayList<Integer> ALCount =  new ArrayList();
+        ArrayList<Object>  ALName = new ArrayList();
+        ArrayList<ArrayList> Result = new ArrayList();
         while (result.next()) { 
-            int count = result.getInt(1);
+            String nombre = result.getNString(1);
             int id = result.getInt(2);
-            resultado.resultado.put(id, count);
-            System.out.println("Indicador " + count);
+            resultado.resultado.put(id, nombre);
+            System.out.println(id +" es de " + nombre);
+            ALName.add(nombre);
+            ALCount.add(id);
         }
+        Result.add(ALCount);
+        Result.add(ALName);
         desconectar();
+        return Result;
     }
-    
-    public void consulta3() throws SQLException {
+        
+    public Resultado consulta3() throws SQLException {
         conectar(); // se conecta a la base
         Statement select = con.createStatement();
         Resultado resultado = new Resultado();
         int i = 0;
         ResultSet result = select
-                .executeQuery("SELECT id_sexo, id_provincia, COUNT(id_sexo) FROM Afectado GROUP BY id_provincia, id_sexo");
+                .executeQuery("SELECT a.id_sexo, a.id_provincia, p.nombre, COUNT(id_sexo) FROM Afectado a \n" +
+                              "INNER JOIN PROVINCIA p ON p.id_provincia = a.id_provincia\n" +
+                              "GROUP BY a.id_provincia, a.id_sexo, p.nombre");
         while (result.next()) { 
             int sexo = result.getInt(1);
             int provincia = result.getInt(2);
-            int count = result.getInt(3);
-            Consulta3 consulta3 = new Consulta3(sexo, provincia, count);
-            resultado.resultado.put(++i, consulta3);
-            System.out.println(consulta3.toString());
+            String nombre = result.getString(3);
+            int count = result.getInt(4);
+            Consulta3 consulta3;
+            if (resultado.resultado.containsKey(provincia)){
+                consulta3 = (Consulta3)resultado.resultado.get(provincia);
+                consulta3.setSexo(sexo, count);
+                resultado.resultado.replace(provincia, consulta3);
+            } else {
+                consulta3 = new Consulta3(provincia);
+                consulta3.setSexo(sexo, count);
+                consulta3.setNombre(nombre);
+                resultado.resultado.put(provincia, consulta3);
+            }
         }
         desconectar();
+        return resultado;
     }
 
 }

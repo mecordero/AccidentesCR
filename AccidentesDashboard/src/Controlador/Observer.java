@@ -3,17 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model;
-
-import java.util.HashMap;
+package Controlador;
 
 /**
  *
  * @author Usuario
  */
-public class Resultado {
+public abstract class Observer {
     
-    // contiene id y count en una consulta
-    public HashMap<Integer, Object> resultado = new HashMap<>();
-    
+    protected Provincias provincias;
+    public abstract void update();
 }

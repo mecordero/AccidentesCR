@@ -11,22 +11,62 @@ package Model;
  */
 public class Consulta3 {
     
-    private int idSexo;
     private int idProvincia;
-    private int resultado;
+    private String nombre;
+    private int hombre;
+    private int mujer;
+    private int desconocido;
 
-    public Consulta3(int idSexo, int idProvincia, int resultado) {
-        this.idSexo = idSexo;
+    public Consulta3(int idProvincia) {
         this.idProvincia = idProvincia;
-        this.resultado = resultado;
     }
 
-    public int getIdSexo() {
-        return idSexo;
+    public void setSexo(int idSexo, int cantidad) {
+        if (idSexo == 1)
+            this.hombre = cantidad;
+        else if (idSexo == 2)
+            this.mujer = cantidad;
+        else
+            this.desconocido = cantidad;
+    }
+    
+    public int getSexo(int idSexo){
+        if (idSexo == 1)
+            return this.hombre;
+        else if (idSexo == 2)
+            return this.mujer;
+        else
+            return this.desconocido;
+    }
+    
+    public String getSexoNombre(int idSexo){
+        if (idSexo == 1)
+            return "hombre";
+        else if (idSexo == 2)
+            return "mujer";
+        else
+            return "desconocido";
     }
 
-    public void setIdSexo(int idSexo) {
-        this.idSexo = idSexo;
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+
+    public int getHombre() {
+        return hombre;
+    }
+
+    public int getMujer() {
+        return mujer;
+    }
+
+    public int getDesconocido() {
+        return desconocido;
     }
 
     public int getIdProvincia() {
@@ -37,17 +77,9 @@ public class Consulta3 {
         this.idProvincia = idProvincia;
     }
 
-    public int getResultado() {
-        return resultado;
-    }
-
-    public void setResultado(int resultado) {
-        this.resultado = resultado;
-    }
-
     @Override
     public String toString() {
-        return "Consulta3{" + "idSexo=" + idSexo + ", idProvincia=" + idProvincia + ", resultado=" + resultado + '}';
+        return "Consulta3{" + "idProvincia=" + idProvincia + ", hombre=" + hombre + ", mujer=" + mujer + ", desconocido=" + desconocido + '}';
     }
   
 }
