@@ -9,6 +9,7 @@ import Model.DAOSql;
 import Model.Datos;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -29,6 +30,7 @@ public class GraficoReal implements Grafico {
     JFreeChart grafica;
     DefaultCategoryDataset datos = new DefaultCategoryDataset();
     DAOSql dao = new DAOSql();
+    //GraficoProxy guardar;// guarda las estadisticas
     
     public GraficoReal(String tituloGrafico, String EtiqHoriz, String EtiqVert) {
         this.tituloGrafico = tituloGrafico;
@@ -48,15 +50,20 @@ public class GraficoReal implements Grafico {
         Ventana.setLocationRelativeTo(null);
     }
     
-    public void anadirDatos(String Indicador) throws SQLException{
+    public void anadirDatos(String Indicador,GraficoProxy guardar) throws SQLException{
         ArrayList<ArrayList> grafic_info;
+        ArrayList temp = new ArrayList();
         grafic_info= dao.consultaGrafic(Indicador);
         ArrayList<String> name= grafic_info.get(1);
         ArrayList<Integer> counter= grafic_info.get(0);
-        
+        // se guarda la info con respecto al indicador 
+        temp.add(Indicador);
         for (int i = 0; i < name.size(); i++) {
+            temp.add(name.get(i));
+            temp.add(counter.get(i));
             datos.addValue(counter.get(i), Indicador , name.get(i)); 
         }
+        guardar.memoria.add(temp);
     }
     
 }

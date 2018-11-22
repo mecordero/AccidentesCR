@@ -5,6 +5,7 @@
  */
 package accidentesdashboard;
 
+import Controlador.GraficoProxy;
 import Controlador.GraficoReal;
 import Controlador.ProvinciaObserver;
 import Controlador.Provincias;
@@ -26,18 +27,23 @@ public class AccidentesDashboard {
     public static void main(String[] args) throws SQLException {
         DAOSql dao = new DAOSql();
         //dao.cargarDatos();
-        Resultado resultado = dao.consulta3();
-        Provincias provincias = new Provincias();
-        for (int key : resultado.resultado.keySet()){
-            ProvinciaObserver provinciaObserver = new ProvinciaObserver(provincias);
-            provinciaObserver.setProvincia((Consulta3) resultado.resultado.get(key));
-        }
-        
-        
-        provincias.setState(0);
-        provincias.getGrafico().dibujar();
+        //Resultado resultado = dao.consulta3();
+        //Provincias provincias = new Provincias();
+        //for (int key : resultado.resultado.keySet()){
+        //    ProvinciaObserver provinciaObserver = new ProvinciaObserver(provincias);
+        //    provinciaObserver.setProvincia((Consulta3) resultado.resultado.get(key));
+        //}
+       // provincias.setState(0);
+       // provincias.getGrafico().dibujar();
         //provincias.setState(2);
         //provincias.getGrafico().dibujar("ya");
+        GraficoProxy proxy = new GraficoProxy();
+        proxy.setEtiqHoriz("nosr");
+        proxy.setEtiqVert("cd");
+        proxy.setTituloGrafico("titulo");
+        proxy.setIndicador("sexo");
+        proxy.dibujar();
+        proxy.dibujar();
     }
     
 }

@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  * @author Marlen
  */
 public class GUIPrueba extends javax.swing.JFrame {
-    GraficoReal grafico= new GraficoReal("Indicadores","Dia", "Cantidad");
+  //  GraficoReal grafico= new GraficoReal("Indicadores","Dia", "Cantidad");
     /**
      * Creates new form GUIPrueba
      */
@@ -80,12 +80,12 @@ public class GUIPrueba extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
-            grafico.anadirDatos("lesion");
-        } catch (SQLException ex) {
-            Logger.getLogger(GUIPrueba.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        grafico.dibujar();
+       // try {
+       //     grafico.anadirDatos("lesion");
+   //     } catch (SQLException ex) {
+     //       Logger.getLogger(GUIPrueba.class.getName()).log(Level.SEVERE, null, ex);
+       // }
+     //   grafico.dibujar();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
