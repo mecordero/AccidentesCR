@@ -21,4 +21,38 @@ public class Datos {
     HashMap<Integer, String> cantones = new HashMap<>();
     HashMap<Integer, Distrito> distritos = new HashMap<>();
     HashMap<Integer, String> lesiones = new HashMap<>();
+
+    public HashMap<Integer, String> getDias() {
+        return dias;
+    }
+
+    public HashMap<Integer, String> getMeses() {
+        return meses;
+    }
+
+    public HashMap<Integer, String> getSexos() {
+        return sexos;
+    }
+
+    public HashMap<Integer, String> getRoles() {
+        return roles;
+    }
+
+    public HashMap<Integer, String> getProvincias() {
+        return provincias;
+    }
+
+    public HashMap<Integer, String> getCantones() {
+        return cantones;
+    }
+
+    public HashMap<Integer, Distrito> getDistritos() {
+        return distritos;
+    }
+
+    public HashMap<Integer, String> getLesiones() {
+        return lesiones;
+    }
+    
+    
 }

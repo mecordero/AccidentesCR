@@ -5,12 +5,14 @@
  */
 package accidentesdashboard;
 
+import Controlador.GraficoProxy;
 import Controlador.GraficoReal;
 import Controlador.ProvinciaObserver;
 import Controlador.Provincias;
 import Model.Consulta3;
 import Model.DAOSql;
 import Model.Resultado;
+import View.MainUI;
 import java.sql.SQLException;
 import java.util.Iterator;
 
@@ -24,20 +26,20 @@ public class AccidentesDashboard {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws SQLException {
-        DAOSql dao = new DAOSql();
+        //  DAOSql dao = new DAOSql();
         //dao.cargarDatos();
-        Resultado resultado = dao.consulta3();
-        Provincias provincias = new Provincias();
-        for (int key : resultado.resultado.keySet()){
-            ProvinciaObserver provinciaObserver = new ProvinciaObserver(provincias);
-            provinciaObserver.setProvincia((Consulta3) resultado.resultado.get(key));
-        }
-        
-        
-        provincias.setState(0);
-        provincias.getGrafico().dibujar();
+        //Resultado resultado = dao.consulta3();
+        //Provincias provincias = new Provincias();
+        //for (int key : resultado.resultado.keySet()){
+        //    ProvinciaObserver provinciaObserver = new ProvinciaObserver(provincias);
+        //    provinciaObserver.setProvincia((Consulta3) resultado.resultado.get(key));
+        //}
+       // provincias.setState(0);
+       // provincias.getGrafico().dibujar();
         //provincias.setState(2);
         //provincias.getGrafico().dibujar("ya");
+        MainUI UI = new MainUI();
+        UI.setVisible(true);
     }
     
 }
