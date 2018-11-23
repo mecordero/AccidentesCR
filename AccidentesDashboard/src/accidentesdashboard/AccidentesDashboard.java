@@ -15,7 +15,9 @@ import Model.Resultado;
 import View.MainUI;
 import java.sql.SQLException;
 import java.util.Iterator;
-
+import java.awt.BorderLayout;
+import javax.swing.JFrame;
+import javax.swing.WindowConstants;
 /**
  *
  * @author Usuario
@@ -38,8 +40,7 @@ public class AccidentesDashboard {
        // provincias.getGrafico().dibujar();
         //provincias.setState(2);
         //provincias.getGrafico().dibujar("ya");
-        MainUI UI = new MainUI();
-        UI.setVisible(true);
+ 
     }
     
 }

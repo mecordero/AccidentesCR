@@ -10,6 +10,7 @@ import Model.Datos;
 import Model.Distrito;
 import java.sql.SQLException;
 import java.util.HashMap;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -34,6 +35,27 @@ public class Controlador {
         proxy.setTituloGrafico(titulo);
         proxy.setIndicador(indicador);
         proxy.dibujar();
+    }
+    
+      public void abrirMapa(double latitud, double longitud )
+    {
+        String direccion = "https://maps.googleapis.com/maps/api/"+ "staticmap?zoom=8&size=800x800&markers=size:tiny&color:red&";
+        String key = "&key=AIzaSyCCu1UJxIme0c1I90gNW7nV_jpJ99vdgVs";
+        String la = Double.toString(latitud);
+        String lo = Double.toString(longitud);
+        String las = la.replace('.', 'C');
+        String los = lo.replace('.','C');
+        direccion = direccion + las + '&' + los + "&center="+la+","+lo + key;
+        try
+        {
+            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + direccion);
+        }
+        catch(Exception err)
+        {
+            JOptionPane.showMessageDialog(null,"Error: "+err);
+        }
+        
+
     }
     
 }

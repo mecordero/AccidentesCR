@@ -88,5 +88,8 @@ public class mainPruebas {
 //        }while(p.hasNext());
 //        
 //        System.out.println("finish");
+    Controlador controlador = new Controlador();
+    
+    //controlador.abrirMapa(10.1187 ,-84.161);
     }
 }
