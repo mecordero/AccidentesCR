@@ -16,12 +16,13 @@ import org.jfree.chart.ChartPanel;
  * @author Bryan
  */
 public class BLibre extends javax.swing.JFrame {
-    Controlador controlador = new Controlador();
+    Controlador controlador;
     ChartPanel cp = new ChartPanel(null);
     /**
      * Creates new form BLibre
      */
-    public BLibre() {
+    public BLibre() throws SQLException {
+        this.controlador = new Controlador();
         initComponents();
     }
 
@@ -45,6 +46,7 @@ public class BLibre extends javax.swing.JFrame {
         mujer = new javax.swing.JButton();
         hombre = new javax.swing.JButton();
         desconocido = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -133,6 +135,9 @@ public class BLibre extends javax.swing.JFrame {
             }
         });
 
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel9.setText("Seleccione una opción:");
+
         javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
         panel1.setLayout(panel1Layout);
         panel1Layout.setHorizontalGroup(
@@ -145,7 +150,8 @@ public class BLibre extends javax.swing.JFrame {
                         .addComponent(hombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(mujer, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(todos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(desconocido, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(desconocido, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel9))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         panel1Layout.setVerticalGroup(
@@ -154,6 +160,8 @@ public class BLibre extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel9)
+                .addGap(7, 7, 7)
                 .addComponent(todos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(mujer)
@@ -161,7 +169,7 @@ public class BLibre extends javax.swing.JFrame {
                 .addComponent(hombre)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(desconocido)
-                .addContainerGap(335, Short.MAX_VALUE))
+                .addContainerGap(308, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -260,6 +268,7 @@ public class BLibre extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton mujer;
     private java.awt.Panel panel1;

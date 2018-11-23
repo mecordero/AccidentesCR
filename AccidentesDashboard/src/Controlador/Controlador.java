@@ -23,8 +23,17 @@ public class Controlador {
     private DTOUser dto;
     private DAOSql dao = new DAOSql();
     GraficoProxy proxy =  new GraficoProxy();
+    private Provincias provincias;
 
-    
+    public Controlador() throws SQLException {
+        Resultado resultado = dao.consulta3();
+        provincias = new Provincias();
+        for (int key : resultado.resultado.keySet()){
+            ProvinciaObserver provinciaObserver = new ProvinciaObserver(provincias);
+            provinciaObserver.setProvincia((Consulta3) resultado.resultado.get(key));
+        }
+    }
+
     public Datos cargarDatos() throws SQLException{
         Datos datos = new Datos();
         datos = dao.cargarDatos();
@@ -40,12 +49,6 @@ public class Controlador {
     }
     
     public ChartPanel ConsultaLibre(int state) throws SQLException{
-        Resultado resultado = dao.consulta3();
-        Provincias provincias = new Provincias();
-        for (int key : resultado.resultado.keySet()){
-            ProvinciaObserver provinciaObserver = new ProvinciaObserver(provincias);
-            provinciaObserver.setProvincia((Consulta3) resultado.resultado.get(key));
-        }
         provincias.setState(state);
         return provincias.getGrafico().dibujar();
     }
