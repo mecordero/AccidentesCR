@@ -5,10 +5,12 @@
  */
 package Controlador;
 
+import org.jfree.chart.ChartPanel;
+
 /**
  *
  * @author Marlen
  */
 public interface Grafico {
-    public void dibujar();
+    public ChartPanel dibujar();
 }

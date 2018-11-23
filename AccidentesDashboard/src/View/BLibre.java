@@ -5,20 +5,24 @@
  */
 package View;
 
+import Controlador.Controlador;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.jfree.chart.ChartPanel;
 
 /**
  *
  * @author Bryan
  */
 public class BLibre extends javax.swing.JFrame {
-
+    Controlador controlador;
+    ChartPanel cp = new ChartPanel(null);
     /**
      * Creates new form BLibre
      */
-    public BLibre() {
+    public BLibre() throws SQLException {
+        this.controlador = new Controlador();
         initComponents();
     }
 
@@ -38,6 +42,11 @@ public class BLibre extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         panel1 = new java.awt.Panel();
         jLabel2 = new javax.swing.JLabel();
+        todos = new javax.swing.JButton();
+        mujer = new javax.swing.JButton();
+        hombre = new javax.swing.JButton();
+        desconocido = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -98,21 +107,69 @@ public class BLibre extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel2.setText("Búsqueda Libre");
 
+        todos.setText("Todos");
+        todos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                todosActionPerformed(evt);
+            }
+        });
+
+        mujer.setText("Mujeres");
+        mujer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mujerActionPerformed(evt);
+            }
+        });
+
+        hombre.setText("Hombres");
+        hombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hombreActionPerformed(evt);
+            }
+        });
+
+        desconocido.setText("Desconocido");
+        desconocido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                desconocidoActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel9.setText("Seleccione una opción:");
+
         javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
         panel1.setLayout(panel1Layout);
         panel1Layout.setHorizontalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(hombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(mujer, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(todos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(desconocido, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel9))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         panel1Layout.setVerticalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addContainerGap(451, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel9)
+                .addGap(7, 7, 7)
+                .addComponent(todos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(mujer)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(hombre)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(desconocido)
+                .addContainerGap(308, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -120,7 +177,9 @@ public class BLibre extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 1067, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,20 +209,73 @@ public class BLibre extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        BSimple bSimple = new BSimple();
-        bSimple.setVisible(true);
-        this.dispose();
+        try {
+            // TODO add your handling code here:
+            BSimple bSimple = new BSimple();
+            bSimple.setVisible(true);
+            this.dispose();
+        } catch (SQLException ex) {
+            Logger.getLogger(BLibre.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void todosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_todosActionPerformed
+        try {
+            remove(cp);
+            cp = controlador.ConsultaLibre(0);
+            add(cp);
+            cp.setBounds(400, 170, 700, 500);
+        } catch (SQLException ex) {
+            Logger.getLogger(BLibre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_todosActionPerformed
+
+    private void mujerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mujerActionPerformed
+        try {
+            remove(cp);
+            cp = controlador.ConsultaLibre(2);
+            add(cp);
+            cp.setBounds(400, 170, 700, 500);
+        } catch (SQLException ex) {
+            Logger.getLogger(BLibre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_mujerActionPerformed
+
+    private void desconocidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desconocidoActionPerformed
+        try {
+            remove(cp);
+            cp = controlador.ConsultaLibre(3);
+            add(cp);
+            cp.setBounds(400, 170, 700, 500);
+        } catch (SQLException ex) {
+            Logger.getLogger(BLibre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_desconocidoActionPerformed
+
+    private void hombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hombreActionPerformed
+        try {
+            remove(cp);
+            cp = controlador.ConsultaLibre(1);
+            add(cp);
+            cp.setBounds(400, 170, 700, 500);
+        } catch (SQLException ex) {
+            Logger.getLogger(BLibre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_hombreActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton desconocido;
+    private javax.swing.JButton hombre;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton mujer;
     private java.awt.Panel panel1;
+    private javax.swing.JButton todos;
     // End of variables declaration//GEN-END:variables
 }

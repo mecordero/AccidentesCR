@@ -149,7 +149,7 @@ public class DAOSql {
         Resultado resultado = new Resultado();
         int i = 0;
         ResultSet result = select
-                .executeQuery("SELECT nombre, COUNT(*)" + 
+                .executeQuery("SELECT RTRIM(nombre), COUNT(*)" + 
                         " FROM Afectado a JOIN "+ indicador + " i on a.id_" +indicador + " = i.id_"+
                         indicador+ " GROUP BY nombre");
        
@@ -175,7 +175,7 @@ public class DAOSql {
         Resultado resultado = new Resultado();
         int i = 0;
         ResultSet result = select
-                .executeQuery("SELECT a.id_sexo, a.id_provincia, p.nombre, COUNT(id_sexo) FROM Afectado a \n" +
+                .executeQuery("SELECT a.id_sexo, a.id_provincia, RTRIM(p.nombre), COUNT(id_sexo) FROM Afectado a \n" +
                               "INNER JOIN PROVINCIA p ON p.id_provincia = a.id_provincia\n" +
                               "GROUP BY a.id_provincia, a.id_sexo, p.nombre");
         while (result.next()) { 

@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -39,14 +40,15 @@ public class GraficoReal implements Grafico {
     }
     
     @Override
-    public void dibujar(){
+    public ChartPanel dibujar(){
         grafica =ChartFactory.createBarChart(tituloGrafico,EtiqHoriz, EtiqVert, datos,PlotOrientation.VERTICAL, true, true, false);
         ChartPanel Panel = new ChartPanel(grafica);
-        JFrame Ventana = new JFrame("JFreeChart");
+        return Panel;
+        /*JFrame Ventana = new JFrame("JFreeChart");
         Ventana.getContentPane().add(Panel);
         Ventana.pack();
         Ventana.setVisible(true);
-        Ventana.setLocationRelativeTo(null);
+        Ventana.setLocationRelativeTo(null);*/
     }
     
     public void anadirDatos(String Indicador,GraficoProxy guardar) throws SQLException{

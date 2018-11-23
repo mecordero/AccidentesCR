@@ -33,7 +33,7 @@ public class GraficoProxy implements Grafico{
     String indicador;
 
     @Override
-    public void dibujar() {
+    public ChartPanel dibujar() {
         ArrayList<String> name= new ArrayList();
         ArrayList<Integer> counter= new ArrayList();
         
@@ -44,8 +44,7 @@ public class GraficoProxy implements Grafico{
             } catch (SQLException ex) {
                 Logger.getLogger(GraficoProxy.class.getName()).log(Level.SEVERE, null, ex);
             }
-            graficoReal.dibujar();
-            return;
+            return graficoReal.dibujar();
         }
         for (int i = 0; i < memoria.size(); i++) {
             if(memoria.get(i).get(0).equals(indicador)){
@@ -61,12 +60,13 @@ public class GraficoProxy implements Grafico{
                 anadirDatos(indicador, name, counter);
                 grafica =ChartFactory.createBarChart(tituloGrafico,EtiqHoriz, EtiqVert, datos,PlotOrientation.VERTICAL, true, true, false);
                 ChartPanel Panel = new ChartPanel(grafica);
-                JFrame Ventana = new JFrame("JFreeChart");
+                return Panel;
+                /*JFrame Ventana = new JFrame("JFreeChart");
                 Ventana.getContentPane().add(Panel);
                 Ventana.pack();
                 Ventana.setVisible(true);
                 Ventana.setLocationRelativeTo(null);
-                return;
+                return;*/
             }
         }    
                 
@@ -76,7 +76,7 @@ public class GraficoProxy implements Grafico{
                 } catch (SQLException ex) {
                     Logger.getLogger(GraficoProxy.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                graficoReal.dibujar();
+                return graficoReal.dibujar();
     }
     public void anadirDatos(String Indicador,ArrayList<String> name,ArrayList<Integer> counter){
         for (int i = 0; i < name.size(); i++) {

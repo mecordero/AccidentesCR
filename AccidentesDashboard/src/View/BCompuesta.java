@@ -10,8 +10,11 @@ import Controlador.DTOUser;
 import Model.Datos;
 import Model.Distrito;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 
 /**
@@ -22,6 +25,7 @@ public class BCompuesta extends javax.swing.JFrame {
     DTOUser dto = new DTOUser();
     Datos datos = new Datos();
     Controlador control = new Controlador();
+    String variableControl ="";
     /**
      * Creates new form BCompuesta
      */
@@ -58,6 +62,7 @@ public class BCompuesta extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         ListaDatos = new javax.swing.JList<>();
+        jButton5 = new javax.swing.JButton();
         jButton35 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
@@ -169,7 +174,12 @@ public class BCompuesta extends javax.swing.JFrame {
             }
         });
 
-        jButton34.setText("Ir");
+        jButton34.setText("Añadir a consulta");
+        jButton34.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton34ActionPerformed(evt);
+            }
+        });
 
         ListaDatos.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -178,20 +188,34 @@ public class BCompuesta extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(ListaDatos);
 
+        jButton5.setText("Realizar Consulta");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(219, 219, 219)
+                .addGap(210, 210, 210)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(309, Short.MAX_VALUE))
+                .addGap(78, 78, 78)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(79, 79, 79)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(79, 79, 79)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(197, 197, 197)
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(98, Short.MAX_VALUE))
         );
 
@@ -226,20 +250,21 @@ public class BCompuesta extends javax.swing.JFrame {
                         .addGap(25, 25, 25)
                         .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton31, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panel1Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jButton32)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton29)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton30)))
+                .addContainerGap(990, Short.MAX_VALUE))
             .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panel1Layout.createSequentialGroup()
                     .addGap(26, 26, 26)
                     .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton33, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(panel1Layout.createSequentialGroup()
-                                .addComponent(jButton32)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton30)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton29))
                             .addComponent(jButton35, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton28, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(panel1Layout.createSequentialGroup()
@@ -254,7 +279,12 @@ public class BCompuesta extends javax.swing.JFrame {
             .addGroup(panel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 256, Short.MAX_VALUE)
+                .addGap(91, 91, 91)
+                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton30)
+                    .addComponent(jButton29)
+                    .addComponent(jButton32))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
                 .addComponent(jButton31)
                 .addGap(18, 18, 18)
                 .addComponent(jButton4)
@@ -269,12 +299,7 @@ public class BCompuesta extends javax.swing.JFrame {
                         .addGroup(panel1Layout.createSequentialGroup()
                             .addGap(82, 82, 82)
                             .addComponent(jLabel9)
-                            .addGap(18, 18, 18)
-                            .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jButton32)
-                                .addComponent(jButton30)
-                                .addComponent(jButton29))
-                            .addGap(18, 18, 18)
+                            .addGap(59, 59, 59)
                             .addComponent(jButton35)
                             .addGap(12, 12, 12)
                             .addComponent(jButton33)
@@ -308,19 +333,29 @@ public class BCompuesta extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        BLibre bLibre = new BLibre();
+        BLibre bLibre = null;
+        try {
+            bLibre = new BLibre();
+        } catch (SQLException ex) {
+            Logger.getLogger(BCompuesta.class.getName()).log(Level.SEVERE, null, ex);
+        }
         bLibre.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        BSimple bSimple = new BSimple();
-        bSimple.setVisible(true);
-        this.dispose();
+        try {
+            // TODO add your handling code here:
+            BSimple bSimple = new BSimple();
+            bSimple.setVisible(true);
+            this.dispose();
+        } catch (SQLException ex) {
+            Logger.getLogger(BCompuesta.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton32ActionPerformed
+       variableControl = "Provincia";
        ListaDatos.setVisible(true);
        HashMap<Integer, String> provincia= datos.getProvincias();
        DefaultListModel modeloProvincias = new DefaultListModel();
@@ -333,6 +368,7 @@ public class BCompuesta extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton32ActionPerformed
 
     private void jButton30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton30ActionPerformed
+       variableControl = "Distrito";
        ListaDatos.setVisible(true);
        HashMap<Integer, Distrito> distrito= datos.getDistritos();
        DefaultListModel modeloDistrito = new DefaultListModel();
@@ -344,6 +380,7 @@ public class BCompuesta extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton30ActionPerformed
 
     private void jButton29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton29ActionPerformed
+       variableControl = "Canton";
        ListaDatos.setVisible(true);
        HashMap<Integer, String> canton= datos.getCantones();
        DefaultListModel modeloCanton = new DefaultListModel();
@@ -355,6 +392,7 @@ public class BCompuesta extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton29ActionPerformed
 
     private void jButton35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton35ActionPerformed
+       variableControl = "Mes";
        ListaDatos.setVisible(true);
        HashMap<Integer, String> meses= datos.getMeses();
        DefaultListModel modeloMeses = new DefaultListModel();
@@ -366,6 +404,7 @@ public class BCompuesta extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton35ActionPerformed
 
     private void jButton33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton33ActionPerformed
+       variableControl = "Sexo";
        ListaDatos.setVisible(true);
        HashMap<Integer, String> sexo= datos.getSexos();
        DefaultListModel modeloSexo = new DefaultListModel();
@@ -377,6 +416,7 @@ public class BCompuesta extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton33ActionPerformed
 
     private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton28ActionPerformed
+       variableControl = "Lesion";
        ListaDatos.setVisible(true);
        HashMap<Integer, String> lesion= datos.getLesiones();
        DefaultListModel modeloLesion = new DefaultListModel();
@@ -388,6 +428,7 @@ public class BCompuesta extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton28ActionPerformed
 
     private void jButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton31ActionPerformed
+       variableControl = "Dia";
        ListaDatos.setVisible(true);
        HashMap<Integer, String> dias= datos.getDias();
        DefaultListModel modeloDias = new DefaultListModel();
@@ -399,6 +440,7 @@ public class BCompuesta extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton31ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+       variableControl = "Roles";
        HashMap<Integer, String> roles= datos.getRoles();
        DefaultListModel modeloRoles = new DefaultListModel();
        
@@ -407,6 +449,19 @@ public class BCompuesta extends javax.swing.JFrame {
        }
        this.ListaDatos.setModel(modeloRoles);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton34ActionPerformed
+        //se annade a la consulta cada indicador que se quiere pasar
+        ArrayList<String> datos = new ArrayList<>();
+        for (String i : ListaDatos.getSelectedValuesList()) {
+            datos.add(i);
+        }
+        control.ConsultaCompuesta(variableControl,datos);
+    }//GEN-LAST:event_jButton34ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        control.RealizarConsulta();
+    }//GEN-LAST:event_jButton5ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -423,6 +478,7 @@ public class BCompuesta extends javax.swing.JFrame {
     private javax.swing.JButton jButton34;
     private javax.swing.JButton jButton35;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel9;

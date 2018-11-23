@@ -6,6 +6,7 @@
 package Controlador;
 
 import Model.Consulta3;
+import java.awt.Color;
 
 /**
  *

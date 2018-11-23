@@ -15,7 +15,7 @@ public class ParametrosCollection implements Container{
     //provincias, cantones, distritos, dias, meses, años, roles, lesiones, edades quinquenales y sexos
     
     private ArrayList<ArrayList> datos;
-
+    private Iterator iterator;
     public ParametrosCollection(ArrayList<ArrayList> datos) {
         this.datos = datos;
     }   
@@ -66,7 +66,7 @@ public class ParametrosCollection implements Container{
     
     @Override
     public Iterator getIterator() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       return iterator;
     }
     
     
